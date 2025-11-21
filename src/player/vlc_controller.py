@@ -33,18 +33,36 @@ class VlcController:
         self._on_end = cb
 
     def _handle_end(self, evt):
+        print("[vlc] MediaPlayerEndReached")
+        # once 모드일 때만 on_end 콜백 호출
+
         if self._on_end and not self._looping:
             try: self._on_end()
-            except Exception: pass
+            except Exception as e: 
+                print(f"[vlc] on_end callback error: {e}")
 
     def _guard_loop(self):
         while not self._stop_flag:
-            if self.media_player.get_state() == vlc.State.Error and self._current_files:
-                try:
-                    self.apply_files(self._current_files, 0, self._looping,
-                                     self.media_player.audio_get_volume())
-                except Exception:
-                    pass
+            st = self.media_player.get_state()
+
+            # 상태 전이 로그
+            if st != self._last_state:
+                print(f"[vlc] state changed: {self._last_state} → {st}")
+                self._last_state = st
+
+            if st == vlc.State.Error:
+                print("[vlc] ERROR detected in guard loop")
+                if self._auto_recover and self._current_files:
+                    print("[vlc] (auto-recover ON) would reload current list here")
+
+            # 라즈베리 파이에서 중간 재시작이 Error 감지 -> 재적재 떄문인지 확인
+            
+            # if self.media_player.get_state() == vlc.State.Error and self._current_files:
+            #     try:
+            #         self.apply_files(self._current_files, 0, self._looping,
+            #                          self.media_player.audio_get_volume())
+            #     except Exception:
+            #         pass
             time.sleep(0.5)
 
     # playlist
