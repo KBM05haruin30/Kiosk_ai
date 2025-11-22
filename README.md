@@ -58,7 +58,10 @@ kiosk_ai/
    ```
 
 3. 설정 파일 확인
+
    - config/pipeline.yaml 에서 모니터 인덱스, 카메라 인덱스, providers, 비디오 경로를 확인/수정
+   - src/config.py 에서 pipeline.yaml 경로 확인/수정
+
 4. 실행
    ```
    python src\main.py
@@ -106,9 +109,9 @@ defaults:
 
 - src\ai_insight\engine.py
   - InsightFace FaceAnalysis를 어댑터로 감싸 detect와 age/gender 추정을 제공
-- src\loops\*.py
+- src\loops\\\*.py
   - 캡처/추론/프리뷰 쓰레드 루프
-- src\player\*.py
+- src\player\\\*.py
   - VLC 임베딩, 전체화면 제어, 재생 리스트 전환
 - src\main.py
   - 상태머신, 히스테리시스, 사후 스캔 로직을 조율
