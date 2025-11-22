@@ -38,10 +38,15 @@ kiosk_ai/
 │ │ └─ vlc_controller.py
 ├─ videos/
 │ ├─ young_male/
+│ │ └─ *.mp4
 │ ├─ young_female/
+│ │ └─ *.mp4
 │ ├─ senior_male/
+│ │ └─ *.mp4
 │ ├─ senior_female/
-│ └─ fallback_video/
+│ │ └─ *.mp4
+│ ├─ fallback_video/
+│ │ └─ *.mp4
 ```
 
 - videos 하위 각 폴더에는 최소 1개 이상의 mp4 파일이 있어야 한다.
@@ -59,6 +64,7 @@ kiosk_ai/
 
 3. 설정 파일 확인
 
+   - 폴더를 "/home/pi/Kiosk_ai" 로 만들기
    - config/pipeline.yaml 에서 모니터 인덱스, 카메라 인덱스, providers, 비디오 경로를 확인/수정
    - src/config.py 에서 pipeline.yaml 경로 확인/수정
 
@@ -87,7 +93,7 @@ runtime:
 display:
   target_monitor_index: 1
 videos:
-  base: "D:\\kiosk_ai\\videos"
+  base: "/home/pi/Kiosk_ai/videos"
   categories:
     young_male: "young_male"
     young_female: "young_female"
