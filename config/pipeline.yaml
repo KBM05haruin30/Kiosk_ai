@@ -1,5 +1,5 @@
 camera:
-  index_candidates: [0, 1, 2]
+  index_candidates: [0, 1]
   width: 640
   height: 360
   fps: 30
