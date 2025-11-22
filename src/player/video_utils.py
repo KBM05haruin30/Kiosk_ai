@@ -1,4 +1,4 @@
-# D:\kiosk_ai\src\player\video_utils.py
+# /home/pi/Kiosk_ai/src/player/video_utils.py
 import os
 from typing import List
 

@@ -1,4 +1,4 @@
-# D:\kiosk_ai\src\player\fullscreen.py
+# /home/pi/Kiosk_ai/src/player/fullscreen.py
 import tkinter as tk
 from screeninfo import get_monitors
 

@@ -1,4 +1,4 @@
-# D:\kiosk_ai\src\ai_insight\engine.py
+# /home/pi/Kiosk_ai/src/ai_insight/engine.py
 import numpy as np
 import insightface
 

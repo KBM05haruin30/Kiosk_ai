@@ -1,4 +1,4 @@
-# D:\kiosk_ai\src\player\kiosk_player.py
+# /home/pi/Kiosk_ai/src/player/kiosk_player.py
 from typing import List, Optional
 from .fullscreen import FullscreenWindow
 from .vlc_controller import VlcController
