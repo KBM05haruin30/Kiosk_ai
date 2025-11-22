@@ -6,14 +6,14 @@ camera:
 inference:
   sample_every_n_frames: 1
   male_threshold: 0.5
-  age_cutoff_years: 50        #  새로 추가: 50세 이상이면 senior
+  age_cutoff_years: 50 #  새로 추가: 50세 이상이면 senior
   hysteresis_sec: 2.0
 runtime:
   providers: ["DmlExecutionProvider", "CPUExecutionProvider"] # 필요시 ["CPUExecutionProvider"]
 display:
-  target_monitor_index: 1
+  target_monitor_index: 0
 videos:
-  base: "D:\\kiosk_ai\\videos"
+  base: "/home/pi/Kiosk_ai/videos"
   categories:
     young_male: "young_male"
     young_female: "young_female"

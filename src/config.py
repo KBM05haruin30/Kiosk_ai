@@ -1,6 +1,6 @@
 import yaml, os
 
-def load_config(path=r"D:\kiosk_ai\config\pipeline.yaml"):
+def load_config(path=r"/home/pi/Kiosk_ai/config/pipeline.yaml"):
     with open(path, "r", encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
