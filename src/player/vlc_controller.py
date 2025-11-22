@@ -8,9 +8,13 @@ from .video_utils import abspath
 
 class VlcController:
     def __init__(self, hwnd, volume: int = 100):
-        self.instance = vlc.Instance("--no-video-title-show")
+        self._last_state = None
+        self.instance = vlc.Instance("--no-video-title-show --vout xv")
         self.media_player = self.instance.media_player_new()
-        self.media_player.set_hwnd(hwnd)
+        try:
+            self.media_player.set_xwindow(hwnd)
+        except Exception as e:
+            print("bug on set_xwindow:", e)
 
         self.mlp = self.instance.media_list_player_new()
         self.mlp.set_media_player(self.media_player)
@@ -54,15 +58,7 @@ class VlcController:
                 print("[vlc] ERROR detected in guard loop")
                 if self._auto_recover and self._current_files:
                     print("[vlc] (auto-recover ON) would reload current list here")
-
-            # 라즈베리 파이에서 중간 재시작이 Error 감지 -> 재적재 떄문인지 확인
-            
-            # if self.media_player.get_state() == vlc.State.Error and self._current_files:
-            #     try:
-            #         self.apply_files(self._current_files, 0, self._looping,
-            #                          self.media_player.audio_get_volume())
-            #     except Exception:
-            #         pass
+                    
             time.sleep(0.5)
 
     # playlist

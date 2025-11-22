@@ -19,7 +19,7 @@ def valid_folder_or_fallback(base, cats_map, fallback_key):
 
 def open_camera(candidates, w,h,fps):
     for idx in candidates:
-        cap = cv2.VideoCapture(idx, cv2.CAP_DSHOW)
+        cap = cv2.VideoCapture(idx)
         if cap.isOpened():
             cap.set(cv2.CAP_PROP_FRAME_WIDTH,  w)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, h)
